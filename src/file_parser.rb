@@ -46,9 +46,9 @@ class FileParser
     file_iterator.each do |line|
       line = line.chomp.split(" ")
       @operations << if line.first == "add"
-                       Tree::Add.new(line[1].to_i, line[2].to_i)
+                       Tree::Add.new(line[1].to_i.pred, line[2].to_i)
                      else
-                       Tree::Max.new(line[1].to_i, line[2].to_i)
+                       Tree::Max.new(line[1].to_i.pred, line[2].to_i.pred)
       end
     end
   end

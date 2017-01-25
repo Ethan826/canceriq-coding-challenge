@@ -14,7 +14,7 @@ RSpec.describe Tree::TreeController do
       [[0, 1, 2, 3, 4], [1, 2, 3], [2], [3], [4]].fetch(node)
     end
 
-    def route(start_node, end_node)
+    def nodes_on_path(start_node, end_node)
       { [3, 3] => [3],
         [2, 4] => [2, 1, 0, 4],
         [2, 0] => [2, 1, 0] }.fetch([start_node, end_node])
@@ -70,17 +70,16 @@ RSpec.describe Tree::TreeController do
     end
 
     it "performs a max" do
-      subject.run([Tree::Max.new(2, 0)])
-      expect(subject.output).to eq([0])
+      expect(subject.run([Tree::Max.new(2, 0)])).to eq([0])
     end
 
     it "performs multiple operations" do
-      subject.run([Tree::Add.new(3, 20),
+      result = subject.run([Tree::Add.new(3, 20),
                    Tree::Add.new(0, 15),
                    Tree::Max.new(2, 0),
                    Tree::Add.new(4, 50),
                    Tree::Max.new(2, 4)])
-      expect(subject.output).to eq([15, 65])
+      expect(result).to eq([15, 65])
     end
   end
 end
