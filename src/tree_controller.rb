@@ -20,6 +20,10 @@ module Tree
     end
 
     def max(start_node, end_node)
+      # Reduce to avoid two traversals with #map then #max
+      tree_navigator.route(start_node, end_node).reduce(-1.0/0) do |max, node|
+        values[node] > max ? values[node] : max
+      end
     end
 
     def nodes_on_path(start_node, end_node)

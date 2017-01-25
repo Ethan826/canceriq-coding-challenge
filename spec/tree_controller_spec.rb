@@ -14,6 +14,10 @@ RSpec.describe Tree::TreeController do
       [[0, 1, 2, 3, 4], [1, 2, 3], [2], [3], [4]].fetch(node)
     end
 
+    def route(start_node, end_node)
+      {[3, 3] => [3], [2, 4] => [2, 1, 0, 4]}.fetch([start_node, end_node])
+    end
+
   end
 
   context "easy input" do
@@ -62,7 +66,17 @@ RSpec.describe Tree::TreeController do
     end
 
     describe "#max" do
-      # let(:)
+      before do
+        subject.instance_variable_set(:@values, [10, 20, 30, 40, 50])
+      end
+
+      it "finds the max for self" do
+        expect(subject.max(3, 3)).to eq(40)
+      end
+
+      it "finds the max for a route" do
+        expect(subject.max(2, 4)).to eq(50)
+      end
     end
   end
 end
