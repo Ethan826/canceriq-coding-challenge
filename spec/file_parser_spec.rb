@@ -19,12 +19,12 @@ RSpec.describe FileParser do
 
   describe "#operations" do
     expected = [
-      FileParser::Add.new(4, 30), # TODO: refactor into other namespace
-      FileParser::Add.new(5, 20),
-      FileParser::Max.new(4, 5),
-      FileParser::Add.new(2, -20),
-      FileParser::Max.new(4, 5),
-      FileParser::Max.new(3, 4),
+      Tree::Add.new(4, 30), # TODO: refactor into other namespace
+      Tree::Add.new(5, 20),
+      Tree::Max.new(4, 5),
+      Tree::Add.new(2, -20),
+      Tree::Max.new(4, 5),
+      Tree::Max.new(3, 4),
     ]
 
     specify { expect(subject.operations).to eq(expected) }

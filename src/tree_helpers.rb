@@ -33,5 +33,7 @@ module Tree
   end
 
   Node = Struct.new(:parent, :children, :depth)
+  Add = Struct.new(:node, :value)
+  Max = Struct.new(:start_node, :end_node)
 
 end

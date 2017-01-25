@@ -1,8 +1,5 @@
 class FileParser
 
-  Add = Struct.new(:node, :value)
-  Max = Struct.new(:start_node, :end_node)
-
   attr_reader :num_edges, :adjacency_list, :operations
 
   def initialize(path)
@@ -49,9 +46,9 @@ class FileParser
     file_iterator.each do |line|
       line = line.chomp.split(" ")
       @operations << if line.first == "add"
-                       Add.new(line[1].to_i, line[2].to_i)
+                       Tree::Add.new(line[1].to_i, line[2].to_i)
                      else
-                       Max.new(line[1].to_i, line[2].to_i)
+                       Tree::Max.new(line[1].to_i, line[2].to_i)
       end
     end
   end
