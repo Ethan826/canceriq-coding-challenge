@@ -75,10 +75,10 @@ RSpec.describe Tree::TreeController do
 
     it "performs multiple operations" do
       result = subject.run([Tree::Add.new(3, 20),
-                   Tree::Add.new(0, 15),
-                   Tree::Max.new(2, 0),
-                   Tree::Add.new(4, 50),
-                   Tree::Max.new(2, 4)])
+                            Tree::Add.new(0, 15),
+                            Tree::Max.new(2, 0),
+                            Tree::Add.new(4, 50),
+                            Tree::Max.new(2, 4)])
       expect(result).to eq([15, 65])
     end
   end
