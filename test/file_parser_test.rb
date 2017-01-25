@@ -37,17 +37,3 @@ class TestFileParser < Minitest::Test
   end
 
 end
-
-__END__
-5
-1 2
-2 3
-2 4
-5 1
-6
-add 4 30
-add 5 20
-max 4 5
-add 2 -20
-max 4 5
-max 3 4
