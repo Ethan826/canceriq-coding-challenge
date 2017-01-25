@@ -1,7 +1,6 @@
 require "minitest/autorun"
-require_relative "file_parser"
+require_relative "../src/file_parser"
 require "tempfile"
-require "set"
 
 class TestFileParser < Minitest::Test
 
@@ -17,11 +16,7 @@ class TestFileParser < Minitest::Test
   end
 
   def test_adjacency_list
-    expected = [[1, 4].to_set,
-                [0, 2, 3].to_set,
-                [1].to_set,
-                [1].to_set,
-                [0].to_set]
+    expected = [[1, 4], [0, 2, 3], [1], [1], [0]]
     assert_equal(expected, subject.adjacency_list)
   end
 

@@ -1,5 +1,3 @@
-require "set"
-
 class FileParser
 
   Add = Struct.new(:node, :value)
@@ -31,7 +29,7 @@ class FileParser
   end
 
   def make_adjacency_list(file_iterator)
-    @adjacency_list = Array.new(num_edges) { [].to_set }
+    @adjacency_list = Array.new(num_edges) { [] }
     line = file_iterator.next.chomp
     loop do
       add_to_adjacency_list(line)
