@@ -26,23 +26,6 @@ module Tree
       end
     end
 
-    def nodes_on_path(start_node, end_node)
-      # Swap "start" node if it's at a higher depth than "end" node (so we traverse up)
-      start_node, end_node = end_node, start_node if tree[end_node].depth > tree[start_node].depth
-      position = start_node
-      route = [position, end_node].to_set
-      (tree[start_node].depth - tree[end_node].depth).times do
-        position = tree[position].parent
-        route << position
-      end
-      while position != end_node
-        position = tree[position].parent
-        end_node = tree[end_node].parent
-        route += [position, end_node]
-      end
-      route
-    end
-
     def self.tree_from(adjacency_list)
       tree = Array.new(adjacency_list.length)
 
