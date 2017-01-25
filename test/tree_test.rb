@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require_relative "../src/tree"
 
-class TestFileParser < Minitest::Test
+class TestTree < Minitest::Test
 
   attr_reader :easy_input, :harder_input
 
@@ -11,16 +11,14 @@ class TestFileParser < Minitest::Test
   end
 
   def test_tree_easy
-    t = Tree.new(easy_input)
     expected = [
       Tree::Node.new(nil, [1], 0),
       Tree::Node.new(0, [], 1),
     ]
-    assert_equal(expected, t.tree)
+    assert_equal(expected, Tree::TreeController.tree_from(easy_input))
   end
 
   def test_tree_harder
-    t = Tree.new(harder_input)
     expected = [
       Tree::Node.new(nil, [1, 4], 0), # 0
       Tree::Node.new(0, [2, 3], 1),   # 1
@@ -28,25 +26,25 @@ class TestFileParser < Minitest::Test
       Tree::Node.new(1, [], 2),       # 3
       Tree::Node.new(0, [], 1),       # 4
     ]
-    assert_equal(expected, t.tree)
+    assert_equal(expected, Tree::TreeController.tree_from(harder_input))
   end
 
   def test_add_to_leaf
-    t = Tree.new(harder_input)
+    t = Tree::TreeController.new(harder_input)
     t.add(4, 20)
     expected = [0, 0, 0, 0, 20]
     assert_equal(expected, t.values)
   end
 
   def test_add_to_root
-    t = Tree.new(harder_input)
+    t = Tree::TreeController.new(harder_input)
     t.add(0, 20)
     expected = [20, 20, 20, 20, 20]
     assert_equal(expected, t.values)
   end
 
   def test_multiple_adds
-    t = Tree.new(harder_input)
+    t = Tree::TreeController.new(harder_input)
     t.add(0, 20)
     t.add(3, -10)
     t.add(1, 100)
@@ -55,3 +53,4 @@ class TestFileParser < Minitest::Test
   end
 
 end
+
