@@ -6,12 +6,11 @@ module Tree
 
   class TreeController
 
-    attr_reader :tree, :values
+    attr_reader :values
 
-    def initialize(adjacency_list)
-      tree = self.class.tree_from(adjacency_list)
-      @tree_navigator = TreeNavigator.new(tree)
-      @values = Array.new(tree.length) { 0 }
+    def initialize(tree_navigator)
+      @tree_navigator = tree_navigator
+      @values = Array.new(tree_navigator.num_nodes) { 0 }
     end
 
     def add(node, value)

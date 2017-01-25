@@ -1,7 +1,20 @@
 require "spec_helper"
 
 RSpec.describe Tree::TreeController do
-  subject { described_class.new(input) }
+  subject { described_class.new(tree_navigator) }
+  let(:tree_navigator) { TreeNavigatorMock.new }
+
+  class TreeNavigatorMock
+
+    def num_nodes
+      5
+    end
+
+    def descendents(node)
+      [[0, 1, 2, 3, 4], [1, 2, 3], [2], [3], [4]].fetch(node)
+    end
+
+  end
 
   context "easy input" do
     let(:input) { [[1], [0]] }
@@ -46,6 +59,10 @@ RSpec.describe Tree::TreeController do
         expected = [20, 120, 120, 110, 20]
         expect(subject.values).to eq(expected)
       end
+    end
+
+    describe "#max" do
+      # let(:)
     end
   end
 end

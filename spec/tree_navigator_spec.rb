@@ -12,8 +12,11 @@ RSpec.describe Tree::TreeNavigator do
     ]
   end
 
-  describe "#nodes_on_path" do
+  describe "#num_nodes" do
+    specify { expect(subject.num_nodes).to eq(5) }
+  end
 
+  describe "#nodes_on_path" do
     it "can find path to itself" do
       expect(subject.nodes_on_path(3, 3).sort).to match([3].sort)
     end

@@ -10,6 +10,10 @@ module Tree
       @tree = tree
     end
 
+    def num_nodes
+      tree.length
+    end
+
     def nodes_on_path(start_node, end_node)
       # Swap "start" node if it's at a higher depth than "end" node (so we traverse up)
       start_node, end_node = end_node, start_node if tree[end_node].depth > tree[start_node].depth
