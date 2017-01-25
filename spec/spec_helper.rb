@@ -17,7 +17,6 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-
 Dir[File.expand_path(".") + "/src/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|

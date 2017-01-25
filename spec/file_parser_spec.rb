@@ -19,7 +19,7 @@ RSpec.describe FileParser do
 
   describe "#operations" do
     expected = [
-      FileParser::Add.new(4, 30), # TODO refactor into other namespace
+      FileParser::Add.new(4, 30), # TODO: refactor into other namespace
       FileParser::Add.new(5, 20),
       FileParser::Max.new(4, 5),
       FileParser::Add.new(2, -20),
