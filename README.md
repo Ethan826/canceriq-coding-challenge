@@ -8,7 +8,9 @@ the results of those operations.
 Usage
 -----
 
-    $> ruby main.rb /home/foouser/datafiles/input01.txt
+```bash
+$> ruby main.rb /home/foouser/datafiles/input01.txt
+```
 
 The output will appear as `output.txt` in the current directory.
 
@@ -22,27 +24,31 @@ Input
 
 The input file must adhere to the format:
 
-    3
-    1 2
-    1 3
-    2
-    add 2 20
-    max 1 2
+```text
+3
+1 2
+1 3
+2
+add 2 20
+max 1 2
+```
 
 As it stands, there is no cleansing performed. A further iteration could
 involve removing extra whitespace or newlines. Further cleansing appears
 unwise in that the final output depends significantly on the input. The
-utility also does not seek to handle incorrect data, either. For
-example, the program will crash with an index out of bounds error if an
-edge is specified connecting a node that does not exist.
+utility does not seek to handle incorrect data, either. For example, the
+program will crash with an index out of bounds error if an edge is
+specified connecting a node that does not exist.
 
 The following regular expression can be used to verify files:
 
+```regex
                 Edges                    Operations
                 --------------v          -----------------------------------------v
     \A(\d+\r?\n)(\d+ \d+\r?\n)+(\d+\r?\n)((add|max) \d+ -?\d+((\r?\n)|(\r?\n)?\Z))+
     -----------^               ---------^
     Number of nodes            Number of operations
+```
 
 Algorithm
 ---------

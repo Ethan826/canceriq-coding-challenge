@@ -1,5 +1,16 @@
 module Tree
 
+  Node = Struct.new(:parent, :children, :depth)
+  Add = Struct.new(:node, :value)
+  Max = Struct.new(:start_node, :end_node)
+
+  # Converts an adjacency list into a representation of a tree.
+  #
+  # @param adjacency_list [Array<Array<Int>>] an array in which each index
+  #   represents the node number and the elements of the array represent
+  #   node numbers that share an edge with that node
+  # @return [Array<Tree::Node>] an array in which each index represents the
+  #   node number and each element contains data for that node
   def self.tree_from(adjacency_list)
     tree = Array.new(adjacency_list.length)
 
@@ -31,9 +42,5 @@ module Tree
     end
     tree
   end
-
-  Node = Struct.new(:parent, :children, :depth)
-  Add = Struct.new(:node, :value)
-  Max = Struct.new(:start_node, :end_node)
 
 end
