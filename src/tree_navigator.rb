@@ -18,7 +18,7 @@ module Tree
       # Swap "start" node if it's at a higher depth than "end" node (so we traverse up)
       start_node, end_node = end_node, start_node if tree[end_node].depth > tree[start_node].depth
       position = start_node
-      route = [position, end_node].to_set
+      route = [position, end_node]
       (tree[start_node].depth - tree[end_node].depth).times do
         position = tree[position].parent
         route << position
